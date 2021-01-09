@@ -1,0 +1,59 @@
+{% extends 'enroll/basic.html' %}
+{% block title %} Registration Form {% endblock %}
+{% block head %}
+<style>
+    .table-responsive {
+    max-height:300px;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h2 class='col-sm-12 text-center alert alert-dark mt-1'>Student Management System</h2>
+        <div class="col-sm-4 mt-1">
+            <h4 class="alert alert-success text-center"> Add Student</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+        <div class="col-sm-7 mt-1 offset-1">
+            <h4 class="alert alert-success text-center"> Student Record</h4>
+            <div class="table-responsive">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for record in records %}
+                    <tr>
+                    
+                      <th scope="row">{{record.id}}</th>
+                      <td>{{record.name}}</td>
+                      <td>{{record.email}}</td>
+                      <td>{{record.password}}</td>
+                      <td>fdh</td>
+                      
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+              </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
